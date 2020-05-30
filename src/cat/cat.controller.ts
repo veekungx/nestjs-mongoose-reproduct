@@ -27,8 +27,8 @@ export class CatController {
     console.log('OVERVIEW');
     console.log('===============================================');
     console.log('OriginalCatModel created with mongoose.Schema({}) from "mongoose"')
-    console.log('\nLatestCatModel created with @Schema(), @Prop() from "@nestjs/mongoose"')
-    console.log('\nRawCatModel created with @Schema(), @Prop(raw({})) from "@nestjs/mongoose"')
+    console.log('\nLatestCatModel created with @Schema(), @Prop({ type: Map }) from "@nestjs/mongoose"')
+    console.log('\nRawCatModel created with @Schema(), @Prop(raw({ type: Map })) from "@nestjs/mongoose"')
 
     await this.originalCatModel.deleteMany({});
     await this.latestCatModel.deleteMany({});
