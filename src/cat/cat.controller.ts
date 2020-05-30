@@ -78,18 +78,18 @@ export class CatController {
     console.log('===============================================');
 
     try {
-      console.log('Value from Map.get() =', retrieveOrignalCat.family.get('1'));
+      console.log('Value from Map.get() =>', retrieveOrignalCat.family.get('1'));
     } catch (e) {
       console.log('ERROR:', e.message);
     }
 
     try {
-      console.log('Value from Map.get() =', retrieveLatestCat.family.get('1'));
+      console.log('Value from Map.get() =>', retrieveLatestCat.family.get('1'));
     } catch (e) {
       console.log('ERROR:', e.message);
     }
     try {
-      console.log('Value from Map.get() =', retrieveRawCat.family.get('1'));
+      console.log('Value from Map.get() =>', retrieveRawCat.family.get('1'));
     } catch (e) {
       console.log('ERROR:', e.message);
     }
