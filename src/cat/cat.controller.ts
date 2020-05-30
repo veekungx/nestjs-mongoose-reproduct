@@ -18,11 +18,17 @@ export class CatController {
 
   async onApplicationBootstrap() {
     console.log('===============================================');
+    console.log('PROBLEM');
+    console.log('===============================================');
+    console.log('Expect @Prop({ type: Map }) to be instance of Map after retrieved back from query')
+
+    
+    console.log('\n===============================================');
     console.log('OVERVIEW');
     console.log('===============================================');
     console.log('OriginalCatModel created with mongoose.Schema({}) from "mongoose"')
-    console.log('LatestCatModel created with @Schema(), @Prop() from "@nestjs/mongoose"')
-    console.log('RawCatModel created with @Schema(), @Prop(raw({})) from "@nestjs/mongoose"')
+    console.log('\nLatestCatModel created with @Schema(), @Prop() from "@nestjs/mongoose"')
+    console.log('\nRawCatModel created with @Schema(), @Prop(raw({})) from "@nestjs/mongoose"')
 
     await this.originalCatModel.deleteMany({});
     await this.latestCatModel.deleteMany({});
@@ -40,8 +46,8 @@ export class CatController {
     console.log('BEFORE STORE INTO DB');
     console.log('===============================================');
     console.log('orignalCat.family is instance of Map,', originalCat.family instanceof Map);
-    console.log('latestCat.family is instance of Map,', latestCat.family instanceof Map);
-    console.log('rawCat.family is instance of Map,', rawCat.family instanceof Map);
+    console.log('\nlatestCat.family is instance of Map,', latestCat.family instanceof Map);
+    console.log('\nrawCat.family is instance of Map,', rawCat.family instanceof Map);
 
     originalCat.family.set('1', 'Original');
     latestCat.family.set('1', 'Latest');
@@ -56,11 +62,11 @@ export class CatController {
     const retrieveRawCat = await this.rawCatModel.findOne();
 
     console.log('\n===============================================');
-    console.log('AFTER RETRIVE BACK FROM QUERY');
+    console.log('AFTER RETRIVE BACK FROM QUERY WITH model.findOne()');
     console.log('===============================================');
-    console.log(`retrieveOrignalCat.family is instance of Map, ${retrieveOrignalCat.family instanceof Map}`);
-    console.log(`retrieveLatestCat.family is instance of Map, ${retrieveLatestCat.family instanceof Map} <=== THIS SHOULD BE TRUE`);
-    console.log(`retrieveRawCat.family is instance of Map, ${retrieveRawCat.family instanceof Map} <=== THIS SHOULD BE TRUE\n`);
+    console.log('retrieveOrignalCat.family is instance of Map,', retrieveOrignalCat.family instanceof Map);
+    console.log('\nretrieveLatestCat.family is instance of Map,', retrieveLatestCat.family instanceof Map);
+    console.log('\nretrieveRawCat.family is instance of Map,', retrieveRawCat.family instanceof Map);
 
     console.log('\n===============================================');
     console.log('TRY Map.get() API');
@@ -73,14 +79,16 @@ export class CatController {
     }
 
     try {
-      console.log('Value from retrieveLatestCat.family.get(1) =>', retrieveLatestCat.family.get('1'));
+      console.log('\nValue from retrieveLatestCat.family.get(1) =>', retrieveLatestCat.family.get('1'));
     } catch (e) {
-      console.log('ERROR:', e.message);
+      console.log('\nERROR:', e.message);
     }
     try {
-      console.log('Value from retrieveRawCat.family.get(1) =>', retrieveRawCat.family.get('1'));
+      console.log('\nValue from retrieveRawCat.family.get(1) =>', retrieveRawCat.family.get('1'));
     } catch (e) {
-      console.log('ERROR:', e.message);
+      console.log('\nERROR:', e.message);
     }
+
+    console.log('\n================= END OF LINE ==================\n')
   }
 }
