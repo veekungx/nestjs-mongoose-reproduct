@@ -1,0 +1,97 @@
+import { Controller, Inject } from '@nestjs/common';
+import { InjectModel } from '@nestjs/mongoose';
+import { LatestCatModel } from './models/latest-cat.model';
+import { Model } from 'mongoose';
+import { RawCatModel } from './models/raw-cat.model';
+import { OriginalCatModel } from './models/original-cat.model';
+
+@Controller('cat')
+export class CatController {
+  constructor(
+    @InjectModel('LatestCatModel')
+    private readonly latestCatModel: Model<LatestCatModel>,
+    @InjectModel('RawCatModel')
+    private readonly rawCatModel: Model<RawCatModel>,
+    @InjectModel('OriginalCatModel')
+    private readonly originalCatModel: Model<OriginalCatModel>,
+  ) {}
+
+  async onApplicationBootstrap() {
+    const originalCat = new this.originalCatModel();
+    const latestCat = new this.latestCatModel();
+    const rawCat = new this.rawCatModel();
+
+    await this.originalCatModel.deleteMany({});
+    await this.latestCatModel.deleteMany({});
+    await this.rawCatModel.deleteMany({});
+
+    originalCat.family = new Map();
+    latestCat.family = new Map();
+    rawCat.family = new Map();
+
+    console.log('===============================================');
+    console.log('BEFORE STORE INTO DB');
+    console.log('===============================================');
+    console.log(
+      'orignalCat.family is an instanceof Map,',
+      originalCat.family instanceof Map,
+    );
+    console.log(
+      'latestCat.family is an instanceof Map,',
+      latestCat.family instanceof Map,
+    );
+    console.log(
+      'rawCat.family is an instanceof Map,',
+      rawCat.family instanceof Map,
+    );
+
+    originalCat.family.set('1', 'Original');
+    latestCat.family.set('1', 'Latest');
+    rawCat.family.set('1', 'Raw');
+
+    await originalCat.save();
+    await latestCat.save();
+    await rawCat.save();
+
+    const retrieveOrignalCat = await this.originalCatModel.findOne();
+    const retrieveLatestCat = await this.latestCatModel.findOne();
+    const retrieveRawCat = await this.rawCatModel.findOne();
+
+    console.log('\n===============================================');
+    console.log('AFTER RETRIVE BACK FROM QUERY');
+    console.log('===============================================');
+    console.log(
+      `retrieveOrignalCat.family instance of Map, ${retrieveOrignalCat.family instanceof
+        Map}`,
+    );
+    console.log(
+      `retrieveLatestCat.family instance of Map, ${retrieveLatestCat.family instanceof
+        Map} <=== THIS SHOULD BE TRUE`,
+    );
+    console.log(
+      `retrieveRawCat.family instance of Map, ${retrieveRawCat.family instanceof
+        Map} <=== THIS SHOULD BE TRUE\n`,
+    );
+
+    console.log('\n===============================================');
+    console.log('TRY Map.get() API');
+    console.log('===============================================');
+
+    try {
+      console.log('Value from Map.get() =', retrieveOrignalCat.family.get('1'));
+    } catch (e) {
+      console.log('ERROR:', e.message);
+    }
+
+    try {
+      console.log('Value from Map.get() =', retrieveLatestCat.family.get('1'));
+    } catch (e) {
+      console.log('ERROR:', e.message);
+    }
+    try {
+      console.log('Value from Map.get() =', retrieveRawCat.family.get('1'));
+    } catch (e) {
+      console.log('ERROR:', e.message);
+    }
+  }
+}
