@@ -61,16 +61,16 @@ export class CatController {
     console.log('AFTER RETRIVE BACK FROM QUERY');
     console.log('===============================================');
     console.log(
-      `retrieveOrignalCat.family is instance of Map, ${retrieveOrignalCat.family instanceof
-        Map}`,
+      `retrieveOrignalCat.family is instance of Map, 
+      ${retrieveOrignalCat.family instanceof Map}`,
     );
     console.log(
-      `retrieveLatestCat.family is instance of Map, ${retrieveLatestCat.family instanceof
-        Map} <=== THIS SHOULD BE TRUE`,
+      `retrieveLatestCat.family is instance of Map, 
+      ${retrieveLatestCat.family instanceof Map} <=== THIS SHOULD BE TRUE BUT WE GOT OBJECT INSTEAD OF MAP`,
     );
     console.log(
-      `retrieveRawCat.family is instance of Map, ${retrieveRawCat.family instanceof
-        Map} <=== THIS SHOULD BE TRUE\n`,
+      `retrieveRawCat.family is instance of Map, 
+      ${retrieveRawCat.family instanceof Map} <=== THIS SHOULD BE TRUE BUT WE GOT OBJECT INSTEAD OF MAP\n`,
     );
 
     console.log('\n===============================================');
@@ -95,7 +95,10 @@ export class CatController {
       console.log('ERROR:', e.message);
     }
     try {
-      console.log('Value from retrieveRawCat.family.get(1) =>', retrieveRawCat.family.get('1'));
+      console.log(
+        'Value from retrieveRawCat.family.get(1) =>',
+        retrieveRawCat.family.get('1'),
+      );
     } catch (e) {
       console.log('ERROR:', e.message);
     }

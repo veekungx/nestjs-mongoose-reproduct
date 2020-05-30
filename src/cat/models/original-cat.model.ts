@@ -5,5 +5,8 @@ export interface OriginalCatModel extends Document {
 }
 
 export const OriginalCatSchema = new Schema({
-  family: Map,
+  family: {
+    type: Map,
+    of: String,
+  },
 });
