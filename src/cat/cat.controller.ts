@@ -93,23 +93,9 @@ export class CatController {
     console.log('\n===============================================');
     console.log('TRY WITH Object Key');
     console.log('===============================================');
-
-    try {
-      console.log('Value from retrieveOrignalCat.family["1"] =>', retrieveOrignalCat.family['1'])
-    } catch (e) {
-      console.log('ERROR:', e.message);
-    }
-
-    try {
-      console.log('\nValue from retrieveLatestCat.family["1"] =>', retrieveLatestCat.family['1'])
-    } catch (e) {
-      console.log('\nERROR:', e.message);
-    }
-    try {
-      console.log('\nValue from retrieveRawCat.family["1"] =>', retrieveRawCat.family['1'])
-    } catch (e) {
-      console.log('\nERROR:', e.message);
-    }
+    console.log('Value from retrieveOrignalCat.family["1"] =>', retrieveOrignalCat.family['1'])
+    console.log('\nValue from retrieveLatestCat.family["1"] =>', retrieveLatestCat.family['1'])
+    console.log('\nValue from retrieveRawCat.family["1"] =>', retrieveRawCat.family['1'])
 
     console.log('\n================= END OF LINE ==================\n')
   }
