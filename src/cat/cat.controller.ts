@@ -33,15 +33,15 @@ export class CatController {
     console.log('BEFORE STORE INTO DB');
     console.log('===============================================');
     console.log(
-      'orignalCat.family is an instanceof Map,',
+      'orignalCat.family is instance of Map,',
       originalCat.family instanceof Map,
     );
     console.log(
-      'latestCat.family is an instanceof Map,',
+      'latestCat.family is instance of Map,',
       latestCat.family instanceof Map,
     );
     console.log(
-      'rawCat.family is an instanceof Map,',
+      'rawCat.family is instance of Map,',
       rawCat.family instanceof Map,
     );
 
@@ -61,15 +61,15 @@ export class CatController {
     console.log('AFTER RETRIVE BACK FROM QUERY');
     console.log('===============================================');
     console.log(
-      `retrieveOrignalCat.family instance of Map, ${retrieveOrignalCat.family instanceof
+      `retrieveOrignalCat.family is instance of Map, ${retrieveOrignalCat.family instanceof
         Map}`,
     );
     console.log(
-      `retrieveLatestCat.family instance of Map, ${retrieveLatestCat.family instanceof
+      `retrieveLatestCat.family is instance of Map, ${retrieveLatestCat.family instanceof
         Map} <=== THIS SHOULD BE TRUE`,
     );
     console.log(
-      `retrieveRawCat.family instance of Map, ${retrieveRawCat.family instanceof
+      `retrieveRawCat.family is instance of Map, ${retrieveRawCat.family instanceof
         Map} <=== THIS SHOULD BE TRUE\n`,
     );
 
@@ -78,18 +78,18 @@ export class CatController {
     console.log('===============================================');
 
     try {
-      console.log('Value from Map.get() =>', retrieveOrignalCat.family.get('1'));
+      console.log('Value from family.get(1) =>', retrieveOrignalCat.family.get('1'));
     } catch (e) {
       console.log('ERROR:', e.message);
     }
 
     try {
-      console.log('Value from Map.get() =>', retrieveLatestCat.family.get('1'));
+      console.log('Value from family.get() =>', retrieveLatestCat.family.get('1'));
     } catch (e) {
       console.log('ERROR:', e.message);
     }
     try {
-      console.log('Value from Map.get() =>', retrieveRawCat.family.get('1'));
+      console.log('Value from family.get() =>', retrieveRawCat.family.get('1'));
     } catch (e) {
       console.log('ERROR:', e.message);
     }
