@@ -22,7 +22,7 @@ export class CatController {
     console.log('===============================================');
     console.log('OriginalCatModel created with mongoose.Schema({}) from "mongoose"')
     console.log('LatestCatModel created with @Schema(), @Prop() from "@nestjs/mongoose"')
-    console.log('RawCatModel created with @Schema(), @Prop(raw({})) and  from "@nestjs/mongoose"')
+    console.log('RawCatModel created with @Schema(), @Prop(raw({})) from "@nestjs/mongoose"')
 
     await this.originalCatModel.deleteMany({});
     await this.latestCatModel.deleteMany({});
@@ -36,7 +36,7 @@ export class CatController {
     latestCat.family = new Map();
     rawCat.family = new Map();
 
-    console.log('===============================================');
+    console.log('\n===============================================');
     console.log('BEFORE STORE INTO DB');
     console.log('===============================================');
     console.log('orignalCat.family is instance of Map,', originalCat.family instanceof Map);
