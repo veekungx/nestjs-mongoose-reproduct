@@ -17,6 +17,13 @@ export class CatController {
   ) {}
 
   async onApplicationBootstrap() {
+    console.log('===============================================');
+    console.log('OVERVIEW');
+    console.log('===============================================');
+    console.log('OriginalCatModel created with mongoose.Schema({}) from "mongoose"')
+    console.log('LatestCatModel created with @Schema(), @Prop() from "@nestjs/mongoose"')
+    console.log('RawCatModel created with @Schema(), @Prop(raw({})) and  from "@nestjs/mongoose"')
+
     await this.originalCatModel.deleteMany({});
     await this.latestCatModel.deleteMany({});
     await this.rawCatModel.deleteMany({});
