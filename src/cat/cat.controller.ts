@@ -17,13 +17,13 @@ export class CatController {
   ) {}
 
   async onApplicationBootstrap() {
-    const originalCat = new this.originalCatModel();
-    const latestCat = new this.latestCatModel();
-    const rawCat = new this.rawCatModel();
-
     await this.originalCatModel.deleteMany({});
     await this.latestCatModel.deleteMany({});
     await this.rawCatModel.deleteMany({});
+
+    const originalCat = new this.originalCatModel();
+    const latestCat = new this.latestCatModel();
+    const rawCat = new this.rawCatModel();
 
     originalCat.family = new Map();
     latestCat.family = new Map();
@@ -61,13 +61,16 @@ export class CatController {
     console.log('AFTER RETRIVE BACK FROM QUERY');
     console.log('===============================================');
     console.log(
-      `retrieveOrignalCat.family is instance of Map, ${retrieveOrignalCat.family instanceof Map}`,
+      `retrieveOrignalCat.family is instance of Map, ${retrieveOrignalCat.family instanceof
+        Map}`,
     );
     console.log(
-      `retrieveLatestCat.family is instance of Map, ${retrieveLatestCat.family instanceof Map} <=== THIS SHOULD BE TRUE`,
+      `retrieveLatestCat.family is instance of Map, ${retrieveLatestCat.family instanceof
+        Map} <=== THIS SHOULD BE TRUE`,
     );
     console.log(
-      `retrieveRawCat.family is instance of Map, ${retrieveRawCat.family instanceof Map} <=== THIS SHOULD BE TRUE\n`,
+      `retrieveRawCat.family is instance of Map, ${retrieveRawCat.family instanceof
+        Map} <=== THIS SHOULD BE TRUE\n`,
     );
 
     console.log('\n===============================================');
