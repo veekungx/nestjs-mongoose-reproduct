@@ -51,42 +51,27 @@ export class CatController {
     console.log('\n===============================================');
     console.log('AFTER RETRIVE BACK FROM QUERY');
     console.log('===============================================');
-    console.log(
-      `retrieveOrignalCat.family is instance of Map, ${retrieveOrignalCat.family instanceof Map}`,
-    );
-    console.log(
-      `retrieveLatestCat.family is instance of Map, ${retrieveLatestCat.family instanceof Map} <=== THIS SHOULD BE TRUE`,
-    );
-    console.log(
-      `retrieveRawCat.family is instance of Map, ${retrieveRawCat.family instanceof Map} <=== THIS SHOULD BE TRUE\n`,
-    );
+    console.log(`retrieveOrignalCat.family is instance of Map, ${retrieveOrignalCat.family instanceof Map}`);
+    console.log(`retrieveLatestCat.family is instance of Map, ${retrieveLatestCat.family instanceof Map} <=== THIS SHOULD BE TRUE`);
+    console.log(`retrieveRawCat.family is instance of Map, ${retrieveRawCat.family instanceof Map} <=== THIS SHOULD BE TRUE\n`);
 
     console.log('\n===============================================');
     console.log('TRY Map.get() API');
     console.log('===============================================');
 
     try {
-      console.log(
-        'Value from retrieveOrignalCat.family.get(1) =>',
-        retrieveOrignalCat.family.get('1'),
-      );
+      console.log('Value from retrieveOrignalCat.family.get(1) =>', retrieveOrignalCat.family.get('1'));
     } catch (e) {
       console.log('ERROR:', e.message);
     }
 
     try {
-      console.log(
-        'Value from retrieveLatestCat.family.get(1) =>',
-        retrieveLatestCat.family.get('1'),
-      );
+      console.log('Value from retrieveLatestCat.family.get(1) =>', retrieveLatestCat.family.get('1'));
     } catch (e) {
       console.log('ERROR:', e.message);
     }
     try {
-      console.log(
-        'Value from retrieveRawCat.family.get(1) =>',
-        retrieveRawCat.family.get('1'),
-      );
+      console.log('Value from retrieveRawCat.family.get(1) =>', retrieveRawCat.family.get('1'));
     } catch (e) {
       console.log('ERROR:', e.message);
     }
